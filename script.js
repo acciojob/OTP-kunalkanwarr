@@ -9,8 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         input.addEventListener('keydown', (e) => {
-            if (e.key === 'Backspace' && index > 0 && input.value.length === 0) {
-                inputs[index - 1].focus();
+            if (e.key === 'Backspace' && index > 0) {
+                if(input.value.length === 0) {
+                  inputs[index - 1].focus();
+                }
+            }
+             if (e.target.value === '0') {
+                e.target.value = '';
+            }
+        });
+
+        input.addEventListener('focus', (e) => {
+            if (e.target.value === '0') {
+                e.target.value = '';
+            }
+        });
+
+         input.addEventListener('blur', (e) => {
+            if (e.target.value === '') {
+                e.target.value = '0';
             }
         });
     });
